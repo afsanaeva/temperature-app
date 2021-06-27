@@ -4,11 +4,12 @@ document.getElementById("searchBtn").addEventListener("click", function () {
   const temperature = document.getElementById("temperatureAmount");
   const weatherType = document.getElementById("weatherType");
 
-  fetch('https://api.openweathermap.org/data/2.5/weather?q=' + location + '&appid=291d5ce696b82568e271736ceb0d0588')
+  fetch('https://api.openweathermap.org/data/2.5/weather?q=' + locationInput + '&appid=291d5ce696b82568e271736ceb0d0588')
+  //fetch(`https://api.openweathermap.org/data/2.5/weather?q=${locationInput}&appid=291d5ce696b82568e271736ceb0d0588`)
     .then (res => res.json())
     .then(data => {
     console.log(data)
-    locationInput.innerText = data.name;
+    location.innerText = data.name;
     let temperatureCelsius = Math.round(data.main.temp -273.15) ;//Temperature Convert Kelvin to Celsius
     temperature.innerText = temperatureCelsius;
     weatherType.innerText =data.weather.main[0];
